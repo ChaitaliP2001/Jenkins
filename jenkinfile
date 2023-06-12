@@ -7,7 +7,11 @@ pipeline {
          }
        
        }
-       
+       stage("clone the git repo."){
+          steps{
+              sh "git clone "
+          }
+       }
      
      }
 }
