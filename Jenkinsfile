@@ -1,5 +1,5 @@
 pipeline {
-     agent_any
+     agent any
      stages{
        stage("clean up"){
          steps{
@@ -18,6 +18,7 @@ pipeline {
              sh "mvn  clean install"
            }
          }
+       }    
         stage("Test"){
          steps(){
            dir("django-todo-cicd"){
