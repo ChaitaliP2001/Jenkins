@@ -1,0 +1,13 @@
+pipeline {
+     agent_any
+     stages{
+       stage("clean up"){
+         steps{
+           deleteDir()        
+         }
+       
+       }
+       
+     
+     }
+}
