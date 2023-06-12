@@ -7,11 +7,24 @@ pipeline {
          }
        
        }
-       stage("clone the git repo."){
+       stage("clone the git  repo."){
           steps{
-              sh "git clone "
-          }
+              sh "git clone https://github.com/ChaitaliP2001/django-todo-cicd.git"
+          }  
        }
-     
+       stage("Build"){
+         steps{
+           dir("django-todo-cicd"){
+             sh "mvn  clean install"
+           }
+         }
+        stage("Test"){
+         steps(){
+           dir("django-todo-cicd"){
+              sh "mvn test"
+           }
+         }
+        } 
+       }
      }
 }
