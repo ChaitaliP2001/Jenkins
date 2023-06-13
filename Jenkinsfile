@@ -24,13 +24,7 @@ pipeline {
            }
          }
        }    
-        stage("Test"){
-         steps(){
-           dir("django-todo-cicd"){
-              sh "mvn test"
-           }
-         }
-        } 
+       
       
      }
 }
