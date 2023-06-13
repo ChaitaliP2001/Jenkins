@@ -1,5 +1,10 @@
 pipeline {
      agent any
+     environment {
+           def myString = "Hello world"
+           def myNumber = 10
+           def myBool = true
+     }
      stages{
        stage("clean up"){
          steps{
@@ -12,10 +17,10 @@ pipeline {
               sh "git clone https://github.com/ChaitaliP2001/django-todo-cicd.git"
           }  
        }
-       stage("Build"){
+       stage("Demo"){
          steps{
-           dir("django-todo-cicd"){
-             sh "mvn  clean install"
+           {
+             echo "myString : $(myString)"
            }
          }
        }    
