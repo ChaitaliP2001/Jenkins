@@ -1,9 +1,0 @@
-*******step 1. -update system
--update your system
--sudo apt update
-*******step 2. Install java
---apt install openjdk-11-jre
-******step 3. validate java
--java -version
-******step 4. install jenkins
--apt-get install jenkins
