@@ -1,0 +1,75 @@
+Prerequisites
+To install Jenkins on Ubuntu 20.04, the following requirements must be met.
+
+A server with at least 2 GB RAM and 2 cores.
+The Ubuntu 20.04 OS installed.
+All commands are executed as the root user. If you are a normal user, you must have access to and use the sudo command.
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Installation : -
+
+1.First, we should always update Ubuntu and all installed applications.
+
+--root@host:~# apt update &&  apt upgrade -y
+
+2.Install JDK
+In order to install, configure, and use Jenkins, we need the Java Development Kit (JDK) installed. 
+First, we check if we already have the JDK software installed on the server using the version command.
+
+--root@host:~# java -version
+            -bash: java: command not found
+
+Now we can install the JDK.
+
+--root@host:~# apt install openjdk-11-jdk -y
+
+Verify Java Version.
+Lastly, we verify the Java version using this command.
+
+-- root@host:~# java -version
+openjdk version "11.0.9.1" 2020-11-04
+OpenJDK Runtime Environment (build 11.0.9.1+1-Ubuntu-120.04)
+OpenJDK 64-Bit Server VM (build 11.0.9.1+1-Ubuntu-120.04, mixed mode)
+
+
+3.Install Jenkins-
+Next, we install Jenkins itself. The Jenkins version contained in the standard Ubuntu packages is different from the latest available version. Therefore, we will install the newest version from the official site.
+
+https://pkg.jenkins.io/debian/
+
+First, we add the gpg key to verify the authenticity of the software from the repository.
+
+root@host:~# wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add -
+OK
+root@host:~#
+
+After this, we add the repository address to our /etc/apt/sources.list.d file. This list contains information on where to download and update the application. 
+
+--root@host:~# sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+e>     /etc/apt/sources.list.d/jenkins.list'
+
+
+4.Next, let’s update our package list again so that the apt package manager can find the software new repository.
+
+--root@host:~# apt-get update
+
+5.Now we can install Jenkins-
+
+--+root@host:~# apt install jenkins -y
+
+6.Start and Verify the Service
+
+We have installed Jenkins.
+Now we will start it using the systemctl system command.
+
+
+--root@host:~# systemctl start jenkins
+
+
+7.Set up Jenkins Users
+Now let's start setting up our main user. Go to a browser and enter http://YOUR_IP_OR_DOMAIN:8080
+
+YOUR_IP_OR_DOMAIN - list your domain name or IP address here. If you don’t know your IP address, you can verify it using the following command.
+
+--root@host:~# ip a
