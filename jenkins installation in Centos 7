@@ -1,1 +1,57 @@
-*
+Prerequisites:
+A Linux-based system (e.g., Ubuntu, CentOS, Debian)
+Java Runtime Environment (JRE) installed (Jenkins requires Java 8 or later)
+
+-------------------------------------------------------------------------------------------------
+
+Installation Steps:
+
+1.Update System Packages: Before installing Jenkins, it’s a good practice to update your system’s package list to ensure you’re installing the latest software.
+
+# sudo yum update -y   # For Fedora/Redhat
+
+2.Install Java:
+
+Jenkins requires Java to run. You can install OpenJDK, which is a free and open-source implementation of the Java Platform. Install it using the following command:
+
+# sudo yum install java-11-openjdk-devel
+
+3.Install Wget:
+
+Next, install the “wget” package to use “wget” utility to download files from website.
+
+# sudo yum install -y wget
+
+4.Add Jenkins Repository:
+
+Next, add the Jenkins repository to your system by creating a Jenkins YUM repository file:
+
+# sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+5.Import Jenkins GPG Key:
+
+Import the Jenkins GPG key to verify the integrity of the Jenkins packages:
+
+# sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+6.Install Jenkins:
+Now, install Jenkins using the following command:
+
+# sudo yum install jenkins -y
+
+
+7.Start Jenkins:
+
+Start the Jenkins service and enable it to start on boot:
+# sudo systemctl start jenkins
+# sudo systemctl enable jenkins
+
+8.Open a Web Browser and Access Jenkins:
+
+Jenkins should now be running. You can access it through your web browser by navigating to http://your_server_ip:8080.
+
+To retrieve the initial Jenkins administrator password, run:
+
+# sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
